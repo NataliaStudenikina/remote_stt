@@ -1,4 +1,4 @@
-package ru.raiffeisen.remoteStartStt.solanteq.soap.model.executeProjectResponse.projectresult;
+package ru.raiffeisen.remoteStartStt.solanteq.soap.model.executeProjectResponse.getprojectresult;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import lombok.*;

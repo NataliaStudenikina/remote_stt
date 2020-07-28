@@ -1,4 +1,4 @@
-package ru.raiffeisen.remoteStartStt.solanteq.soap.model.executeProjectResponse.executeprojectresponse;
+package ru.raiffeisen.remoteStartStt.solanteq.soap.model.executeProjectResponse.getprojectresult;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import lombok.Data;
@@ -8,8 +8,8 @@ import ru.raiffeisen.remoteStartStt.solanteq.soap.model.executeProjectResponse.b
 
 @Data
 @NoArgsConstructor
-public class GetExecuteProjectResponse {
+public class GetProjectResultResponse {
     @NonNull
     @JacksonXmlProperty(namespace = "sol")
-    private ResponsePayload<GetExecuteProjectBody> getExecuteProjectResponse;
+    private ResponsePayload<GetProjectResultBody> getProjectResultResponse;
 }

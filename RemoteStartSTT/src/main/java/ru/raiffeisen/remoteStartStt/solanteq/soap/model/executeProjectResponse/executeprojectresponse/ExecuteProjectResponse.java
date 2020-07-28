@@ -1,12 +1,15 @@
 package ru.raiffeisen.remoteStartStt.solanteq.soap.model.executeProjectResponse.executeprojectresponse;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import ru.raiffeisen.remoteStartStt.soap.Envelope;
+import lombok.NonNull;
+import ru.raiffeisen.remoteStartStt.solanteq.soap.model.executeProjectResponse.base.ResponsePayload;
 
-@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
-public class ExecuteProjectResponse extends Envelope<Object,GetExecuteProjectResponse> {
+public class ExecuteProjectResponse {
+    @NonNull
+    @JacksonXmlProperty(namespace = "sol")
+    private ResponsePayload<GetExecuteProjectBody> executeProjectResponse;
 }

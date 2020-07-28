@@ -25,7 +25,7 @@ public class Configuration {
 
         try {
             prop.load(Configuration.class.getClassLoader().getResourceAsStream("executionData.properties"));
-            for (final String name: prop.stringPropertyNames())
+            for (String name: prop.stringPropertyNames())
                 propertySheet.put(name, prop.getProperty(name));
         } catch (IOException e) {
             throw new RuntimeException("Что-то пошло не так при попытке получить данные из properties файла");

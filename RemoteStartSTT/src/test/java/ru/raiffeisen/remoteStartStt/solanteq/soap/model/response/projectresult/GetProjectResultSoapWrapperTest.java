@@ -2,8 +2,8 @@ package ru.raiffeisen.remoteStartStt.solanteq.soap.model.response.projectresult;
 
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import org.junit.jupiter.api.Test;
-import ru.raiffeisen.remoteStartStt.solanteq.soap.model.executeProjectResponse.executeprojectresponse.ExecuteProjectResponse;
-import ru.raiffeisen.remoteStartStt.solanteq.soap.model.executeProjectResponse.projectresult.GetProjectResultSoapWrapper;
+import ru.raiffeisen.remoteStartStt.solanteq.soap.model.executeProjectResponse.executeprojectresponse.ExecuteProjectResponseWrapper;
+import ru.raiffeisen.remoteStartStt.solanteq.soap.model.executeProjectResponse.getprojectresult.GetProjectResultSoapWrapper;
 
 public class GetProjectResultSoapWrapperTest {
     private final String ProjectResultResponse = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" " +
@@ -29,8 +29,16 @@ public class GetProjectResultSoapWrapperTest {
     @Test
     public void successMappingExecuteProjectResponse() throws Exception {
         XmlMapper responseMapper = new XmlMapper();
-        ExecuteProjectResponse result = responseMapper.readValue(executeProjectResponseResponse, ExecuteProjectResponse.class);
-        System.out.println(result.getBody().toString());
+        ExecuteProjectResponseWrapper result = responseMapper.readValue(executeProjectResponseResponse, ExecuteProjectResponseWrapper.class);
+        System.out.println(result.getBody().getExecuteProjectResponse().getBody().getProjectResultRef().getId());
 
     }
+
+/*    @Test
+    public void checkGetValueOfProjectResult() {
+        ProcessingOfResults results = new ProcessingOfResults();
+        System.out.println(results.getValueOfProjectResult(executeProjectResponseResponse));
+        Assert.assertEquals(102909L,results.getValueOfProjectResult(executeProjectResponseResponse).
+                getProjectResultRef().getId().longValue());
+    }*/
 }
