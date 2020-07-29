@@ -23,10 +23,4 @@ public class CreateTemplate {
         template.merge(context, writer);
         return writer.toString();
     }
-
- /*   public Template getReadyTemplate(Map<String,String> requestData, String template){
-
-    }*/
-
-
 }

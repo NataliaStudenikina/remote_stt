@@ -1,0 +1,19 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sol="http://www.solanteq.com/solar-proof-api">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <sol:getScenarioResultRequest>
+            <sol:header>
+                <sol:protocol> <sol:name>solar-ws</sol:name> <sol:version>2.0</sol:version>
+                </sol:protocol> <sol:messageId>2ca7f8f0-5c92-4619-b2f5-592ca75ad6de</sol:messageId>
+                <sol:messageDate>2015-12-24T13:53:55</sol:messageDate> <sol:originator>
+                <sol:system>EXTERNAL</sol:system>
+            </sol:originator>
+            </sol:header>
+            <sol:body>
+                <sol:scenarioResultRef>
+                    <sol:id>$scenarioID</sol:id>
+                </sol:scenarioResultRef>
+            </sol:body>
+        </sol:getScenarioResultRequest>
+    </soapenv:Body>
+</soapenv:Envelope>

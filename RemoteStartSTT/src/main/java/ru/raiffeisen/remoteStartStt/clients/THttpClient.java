@@ -19,35 +19,37 @@ public class THttpClient {
         return instance;
     }
 
-    private Response post(String url, String template, String serviceName) throws IOException {
+    private Response post(String url, String template, String serviceName){
         MediaType XML = MediaType.parse("text/xml; charset=utf-8");
         RequestBody body = RequestBody.create(XML,template);
-        Headers headers = Headers.of("SOAPAction", "", "Content-Type", body.contentType().toString(), "Content-Length",  Long.toString(body.contentLength()),
-                "Host", url);
+        try {
+            Headers headers = Headers.of("SOAPAction", "",
+                    "Content-Type", body.contentType().toString(),
+                    "Content-Length",  Long.toString(body.contentLength()),
+                    "Host", url);
 
-        Request request = new Request.Builder()
-                .headers(headers)
-                .url(url+ "solar-tt/ws/" + serviceName)
-                .post(body)
-                .build();
-        return send(request);
+            Request request = new Request.Builder()
+                    .headers(headers)
+                    .url(url + serviceName)
+                    .post(body)
+                    .build();
+            return send(request);
+        } catch (IOException e) {
+            throw new RuntimeException("Что-то пошло не так при попытке создать сообщение" + e);
+        }
     }
 
-    private Response send(Request request) throws IOException {
+    private Response send(Request request) {
         try {
             return client.newCall(request).execute();
         } catch (IOException e){
-            throw new IOException("Что-то пошло не так при попытке отправить HTTP запрос. " + e);
+            throw new RuntimeException("Что-то пошло не так при попытке отправить HTTP запрос. " + e);
         }
     }
 
     private Response postRequest(String template, String serviceName) {
         String url = new Configuration().getPropertySheet().get("URL");
-        try {
-            return post(url,template,serviceName);
-        } catch (IOException e) {
-            throw new RuntimeException("Что-то пошло не так при попытке получить или заполнить шаблон сообщения" + e);
-        }
+        return post(url,template,serviceName);
     }
 
     public Response sendPostRequest (Map<String,String> requestData, String templateName) {

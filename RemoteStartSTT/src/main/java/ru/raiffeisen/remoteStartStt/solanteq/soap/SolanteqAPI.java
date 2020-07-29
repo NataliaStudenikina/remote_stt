@@ -2,11 +2,13 @@ package ru.raiffeisen.remoteStartStt.solanteq.soap;
 
 import okhttp3.Response;
 import ru.raiffeisen.remoteStartStt.clients.THttpClient;
+import ru.raiffeisen.remoteStartStt.solanteq.soap.model.executeProjectResponse.executeprojectresponse.ExecuteProjectResponse;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class SolanteqAPI {
+    ProcessingOfResult processingOfResult = new ProcessingOfResult();
     public static void main(String[] attrs){
         new SolanteqAPI().executeProject();
     }
@@ -23,4 +25,18 @@ public class SolanteqAPI {
 
         return THttpClient.create().sendPostRequest(requestData, serviceName);
     }
+
+    public Response getProjectResult() {
+        //TO DO
+        ExecuteProjectResponse ex = new ExecuteProjectResponse();
+        String serviceName = "getProjectResult";
+        return THttpClient.create().sendPostRequest(processingOfResult.createGetProjectResultIdMAP(ex),serviceName);
+
+    }
+
+    public void getScenarioResult() {
+
+    }
+
+
 }
