@@ -7,22 +7,9 @@ import java.util.Properties;
 
 public class Configuration {
 
-/*
-    private String getValueFromProperties(String propertyKey) {
-        Properties prop = new Properties();
-        try {
-            prop.load(Configuration.class.getClassLoader().getResourceAsStream("executionData.properties"));
-            return prop.getProperty(propertyKey);
-        } catch (IOException ex) {
-           throw new RuntimeException("Что-то пошло не так при попытке получить данные из properties файла");
-        }
-    }
-*/
-
      public Map<String,String> getPropertySheet(){
         Map <String,String> propertySheet = new HashMap<>();
         Properties prop = new Properties();
-
         try {
             prop.load(Configuration.class.getClassLoader().getResourceAsStream("executionData.properties"));
             for (String name: prop.stringPropertyNames())
@@ -32,7 +19,6 @@ public class Configuration {
         }
         return propertySheet;
      }
-
 
 
 }

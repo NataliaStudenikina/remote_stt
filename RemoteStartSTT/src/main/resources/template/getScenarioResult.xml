@@ -11,7 +11,7 @@
             </sol:header>
             <sol:body>
                 <sol:scenarioResultRef>
-                    <sol:id>$scenarioID</sol:id>
+                    <sol:id>$scenarioId</sol:id>
                 </sol:scenarioResultRef>
             </sol:body>
         </sol:getScenarioResultRequest>

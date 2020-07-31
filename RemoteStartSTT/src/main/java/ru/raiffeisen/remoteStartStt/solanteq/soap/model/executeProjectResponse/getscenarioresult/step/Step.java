@@ -3,7 +3,8 @@ package ru.raiffeisen.remoteStartStt.solanteq.soap.model.executeProjectResponse.
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
+
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -27,31 +28,25 @@ public class Step {
     @JacksonXmlProperty(namespace = "sol")
     private String name;
 
-    @NonNull
     @JacksonXmlProperty(namespace = "sol")
     private String direction;
 
-    @NonNull
     @JacksonXmlProperty(namespace = "sol")
     private String description;
 
-    @NonNull
     @JacksonXmlProperty(namespace = "sol")
     private String resultMessage;
 
-    @NonNull
     @JacksonXmlProperty(namespace = "sol")
     private String messageType;
 
-    @NonNull
     @JacksonXmlProperty(namespace = "sol")
     private Channel channel;
 
-    @NonNull
     @JacksonXmlProperty(namespace = "sol")
     private Template template;
 
     @JacksonXmlProperty(namespace = "sol")
-    private Validation validations;
+    private List<Validation> validations;
 
 }

@@ -1,11 +1,9 @@
 package ru.raiffeisen.remoteStartStt.clients;
 
 import okhttp3.*;
-import ru.raiffeisen.remoteStartStt.CreateTemplate;
 import ru.raiffeisen.remoteStartStt.utils.Configuration;
 
 import java.io.IOException;
-import java.util.Map;
 
 public class THttpClient {
     private static THttpClient instance;
@@ -19,9 +17,9 @@ public class THttpClient {
         return instance;
     }
 
-    private Response post(String url, String template, String serviceName){
+    private Response post(String url, String xml, String serviceName){
         MediaType XML = MediaType.parse("text/xml; charset=utf-8");
-        RequestBody body = RequestBody.create(XML,template);
+        RequestBody body = RequestBody.create(XML,xml);
         try {
             Headers headers = Headers.of("SOAPAction", "",
                     "Content-Type", body.contentType().toString(),
@@ -47,14 +45,13 @@ public class THttpClient {
         }
     }
 
-    private Response postRequest(String template, String serviceName) {
+    public String sendPostRequest (String xmlData, String serviceName) {
         String url = new Configuration().getPropertySheet().get("URL");
-        return post(url,template,serviceName);
-    }
-
-    public Response sendPostRequest (Map<String,String> requestData, String templateName) {
-        String template = new CreateTemplate().fillTemplate(templateName + ".xml",requestData);
-        return postRequest(template,templateName);
+        try {
+            return THttpClient.create().post(url,xmlData,serviceName).body().string();
+        } catch (IOException e) {
+            throw new RuntimeException("Что-то пошло не так при попытке получить тело зпроса");
+        }
     }
 
 }

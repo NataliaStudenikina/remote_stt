@@ -14,6 +14,13 @@ public class GetProjectResultBody {
     @NonNull
     @JacksonXmlProperty(namespace = "sol")
     private BodyResponse response;
+    @NonNull
+    @JacksonXmlProperty(namespace = "sol")
+    private String startDate; // TODO: Change to DateTime
+
+    @NonNull
+    @JacksonXmlProperty(namespace = "sol")
+    private String finishDate; // TODO: Change to DateTime
 
     @NonNull
     @JacksonXmlProperty(namespace = "sol")
