@@ -8,9 +8,6 @@ import ru.raiffeisen.remoteStartStt.solanteq.soap.model.executeProjectResponse.g
 public class SolanteqAPI {
 
     SendingRequest sendingRequest = new SendingRequest();
-    public static void main(String[] attrs){
-        new SolanteqAPI().executeProject();
-    }
 
     public ExecuteProjectResponse executeProject(String project, String environment) {
         return sendingRequest.sendExecuteProjectResponse(project,environment);
@@ -20,7 +17,7 @@ public class SolanteqAPI {
         return sendingRequest.sendProjectResultRequest(projectResultId);
     }
 
-    public GetScenarioResultResponse getScenarioResult(String scenarioId){
+    public GetScenarioResultResponse getScenarioResult(Long scenarioId){
         return sendingRequest.sendScenarioResultResponse(scenarioId);
     }
 

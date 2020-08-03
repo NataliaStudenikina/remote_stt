@@ -17,6 +17,19 @@ public class THttpClient {
         return instance;
     }
 
+    public String sendPostRequest (String xmlData, String serviceName) {
+        String url = new Configuration().getPropertySheet().get("URL");
+        try {
+            return THttpClient.create().post(url,xmlData,serviceName).body().string();
+        } catch (IOException e) {
+            throw new RuntimeException("Что-то пошло не так при попытке получить тело зпроса");
+        }
+    }
+
+    // =================================================================================================================
+    // Implementation
+    // =================================================================================================================
+
     private Response post(String url, String xml, String serviceName){
         MediaType XML = MediaType.parse("text/xml; charset=utf-8");
         RequestBody body = RequestBody.create(XML,xml);
@@ -44,14 +57,4 @@ public class THttpClient {
             throw new RuntimeException("Что-то пошло не так при попытке отправить HTTP запрос. " + e);
         }
     }
-
-    public String sendPostRequest (String xmlData, String serviceName) {
-        String url = new Configuration().getPropertySheet().get("URL");
-        try {
-            return THttpClient.create().post(url,xmlData,serviceName).body().string();
-        } catch (IOException e) {
-            throw new RuntimeException("Что-то пошло не так при попытке получить тело зпроса");
-        }
-    }
-
 }

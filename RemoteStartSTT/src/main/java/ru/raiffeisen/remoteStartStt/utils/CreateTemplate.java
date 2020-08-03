@@ -1,4 +1,4 @@
-package ru.raiffeisen.remoteStartStt;
+package ru.raiffeisen.remoteStartStt.utils;
 
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;

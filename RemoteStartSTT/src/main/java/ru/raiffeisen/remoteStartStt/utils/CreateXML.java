@@ -1,12 +1,9 @@
-package ru.raiffeisen.remoteStartStt.solanteq.soap;
+package ru.raiffeisen.remoteStartStt.utils;
 
-import ru.raiffeisen.remoteStartStt.CreateTemplate;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ProcessingOfResult {
-
-    private static final String GET_PROJECT_RESULT = "getProjectResult";
+public class CreateXML {
 
     private Map<String,String> createMapForRequest(String key, String value) {
         Map<String, String> templateDataMAP = new HashMap<String, String>();
@@ -28,6 +25,7 @@ public class ProcessingOfResult {
 
     public String createXMLForExecuteProjectRequest(String projectCode, String environmentCode, String templateName) {
         Map<String, String> requestData = new HashMap<String, String>();
+        //TODO
         requestData.put("project_code", projectCode);
         requestData.put("project_environmentCode",environmentCode);
         String template = new CreateTemplate().fillTemplate(templateName + ".xml",
