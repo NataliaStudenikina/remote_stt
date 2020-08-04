@@ -5,15 +5,29 @@ import ru.raiffeisen.remoteStartStt.solanteq.soap.model.executeProjectResponse.e
 import ru.raiffeisen.remoteStartStt.solanteq.soap.model.executeProjectResponse.getprojectresult.GetProjectResultResponse;
 import ru.raiffeisen.remoteStartStt.solanteq.soap.model.executeProjectResponse.getprojectresult.Scenario;
 import ru.raiffeisen.remoteStartStt.solanteq.soap.model.executeProjectResponse.getscenarioresult.GetScenarioResultResponse;
+
 import java.util.Map;
 import java.util.stream.Collectors;
 
 public class CallSolanteqAPIRequest {
-    private final String RESULT_SUCCESS = "SLR-0001";
+    private final String CODE_SUCCESS = "SLR-0001";
+    private final String RESULT_SUCCESS = "OK";
+    private final String RESULT_ERROR = "ERROR";
+    private final String RESULT_SYSTEM_ERROR = "SYS_FAILURE";
+    private final String RESULT_INTERRUPT = "INTERRUPTED";
+    private final String RESULT_WAIT = "WAITING";
+    private final String RESULT_NOT_READY = "UNCOMPLETED";
+
     SolanteqAPI solanteqAPI = new SolanteqAPI();
 
     public ExecuteProjectResponse executeProject(String project, String environment){
-        return solanteqAPI.executeProject(project,environment);
+        ExecuteProjectResponse exResponse = solanteqAPI.executeProject(project,environment);
+        String responseCode = exResponse.getExecuteProjectResponse().getBody().getResponse().getCode();
+
+        if(!responseCode.equals(CODE_SUCCESS))
+            throw new RuntimeException("Code execute request ExecuteProject not equals SLR-0001");
+
+        return exResponse;
     }
 
     public GetProjectResultResponse getProjectResult(ExecuteProjectResponse response) {
@@ -25,6 +39,12 @@ public class CallSolanteqAPIRequest {
         String resultId = response.getExecuteProjectResponse().getBody().getProjectResultRef().getId().toString();
         return solanteqAPI.getProjectResult(resultId);
     }
+
+    private void checkResultResponse(String responseCode) {
+
+
+    }
+
 
     public Iterable<GetScenarioResultResponse> getScenarioResult(GetProjectResultResponse response) {
         return getScenarios(response)
