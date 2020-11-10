@@ -4,6 +4,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -17,10 +18,10 @@ public class Step {
     private String ordinal;
 
     @JacksonXmlProperty(namespace = "sol")
-    private String startDate; // TODO: Change to DateTime
+    private Date startDate; // TODO: Change to DateTime
 
     @JacksonXmlProperty(namespace = "sol")
-    private String finishDate;// TODO: Change to DateTime
+    private Date finishDate;// TODO: Change to DateTime
 
     @JacksonXmlProperty(namespace = "sol")
     private String result;

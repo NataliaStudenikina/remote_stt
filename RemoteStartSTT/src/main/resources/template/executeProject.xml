@@ -4,22 +4,20 @@
         <sol:executeProjectRequest>
             <sol:header>
                 <sol:protocol> <sol:name>solar-ws</sol:name> <sol:version>2.0</sol:version> <!--Идентификатор проекта- -->
-                </sol:protocol> <sol:messageId>$header.messageId</sol:messageId> <!--Идентификатор проекта- -->
-                <sol:messageDate>$header.messageDate</sol:messageDate> <sol:originator>
+                </sol:protocol> <sol:messageId>$messageId</sol:messageId> <!--Идентификатор проекта- -->
+                <sol:messageDate>$messageDate</sol:messageDate> <sol:originator>
                 <sol:system>EXTERNAL</sol:system>
             </sol:originator>
             </sol:header>
             <sol:body>
                 <sol:projectRef>
-                    <sol:id>$project_id</sol:id> <!--Идентификатор проекта- -->
                     <sol:parameters>
                         <sol:code>$project_code</sol:code> <!--Код проекта - -->
                     </sol:parameters>
                 </sol:projectRef>
-                <sol:description>$project_description</sol:description> <!--Описание проекта- -->
-                <sol:interrupt>$project_interrupt</sol:interrupt> <!--true - выполнение проекта прерывается в случае ошибки, false - продолжается -->
+                <sol:description>Remote_project_launch</sol:description> <!--Описание проекта- -->
+                <sol:interrupt>true</sol:interrupt> <!--true - выполнение проекта прерывается в случае ошибки, false - продолжается -->
                 <sol:environmentRef>
-                    <sol:id>$project_environmentId</sol:id> <!--Идентификатор окружения -->
                     <sol:parameters>
                         <sol:code>$project_environmentCode</sol:code> <!--Код окружения -->
                     </sol:parameters>

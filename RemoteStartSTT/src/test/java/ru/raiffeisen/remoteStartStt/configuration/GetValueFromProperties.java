@@ -1,8 +1,7 @@
 package ru.raiffeisen.remoteStartStt.configuration;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import ru.raiffeisen.remoteStartStt.utils.Configuration;
-
 import java.util.Map;
 
 public class GetValueFromProperties {

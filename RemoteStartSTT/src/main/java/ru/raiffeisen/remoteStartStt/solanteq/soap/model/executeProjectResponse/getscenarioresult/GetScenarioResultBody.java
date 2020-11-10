@@ -18,6 +18,14 @@ public class GetScenarioResultBody {
 
     @NonNull
     @JacksonXmlProperty(namespace = "sol")
+    private String code;
+
+    @NonNull
+    @JacksonXmlProperty(namespace = "sol")
+    private String name;
+
+    @NonNull
+    @JacksonXmlProperty(namespace = "sol")
     private String result;
 
     @NonNull
